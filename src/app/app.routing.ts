@@ -8,7 +8,7 @@ import { HelpComponent } from './help/help.component';
 
 const routes: Routes =[
     { path: 'create',   component: CreateComponent },
-    { path: 'help',     component: CreateComponent },
+    { path: 'help',     component: HelpComponent },
     { path: '',               redirectTo: 'create', pathMatch: 'full' }
 ];
 

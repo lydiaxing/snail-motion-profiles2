@@ -8,22 +8,11 @@
             <p class="category">Start a new trajectory - see the help tab</p>
           </div>
           <div class="card-content">
-            <form>
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="form-group form-black label-floating is-empty">
-                    <label class="control-label">Trajectory Name</label>
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
-              </div>
-
               <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <app-canvas></app-canvas>
                 </div>
               </div>
-            </form>
           </div>
         </div>
       </div>
@@ -32,7 +21,7 @@
         <div class="row">
           <div class="card">
             <div class="card-header" data-background-color="red">
-              <h4 class="title">Waypoints</h4>
+              <h4 class="title">Dashboard</h4>
               <p class="category">Add or edit waypoints here</p>
             </div>
             <div class="card-content">
@@ -57,9 +46,7 @@
                     </div>
                   </div>
                 </div>
-              </form>
-              <form>
-                <button type="submit" class="btn btn-danger pull-right">Add</button>
+                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">add</i> Add</button>
                 <div class="clearfix"></div>
                 <div class="card-content table-responsive">
                   <table class="table">
@@ -78,65 +65,22 @@
                       </tr>
                     </tbody>
                   </table>
-
                 </div>
-
                 <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">edit</i> Edit</button>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">Trajectory Name</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">get_app</i> Generate!</button>
               </form>
             </div>
           </div>
         </div>
 
-        <div class="row">
-          <div class="card">
-            <div class="card-header" data-background-color="red">
-              <h4 class="title">Generated Trajectories</h4>
-              <p class="category">See your list of trajectories</p>
-            </div>
-            <div class="card-content">
-              <form>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Sign contract for "What are conference organizers afraid of?"</td>
-                      <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                      <i class="material-icons">close</i>
-                                  </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
-                      <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                      <i class="material-icons">close</i>
-                                  </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
-                      </td>
-                      <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                      <i class="material-icons">close</i>
-                                  </button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>Create 4 Invisible User Experiences you Never Knew About</td>
-                      <td class="td-actions text-right">
-                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
-                                      <i class="material-icons">close</i>
-                                  </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-
-              </form>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="card">
             <div class="card-header" data-background-color="red">
