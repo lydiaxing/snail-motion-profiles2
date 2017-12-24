@@ -1,116 +1,173 @@
 <div class="main-content">
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" data-background-color="red">
-                    <h4 class="title">Edit Profile</h4>
-                    <p class="category">Complete your profile</p>
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header" data-background-color="red">
+            <h4 class="title">Create</h4>
+            <p class="category">Start a new trajectory - see the help tab</p>
+          </div>
+          <div class="card-content">
+            <form>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group form-black label-floating is-empty">
+                    <label class="control-label">Trajectory Name</label>
+                    <input type="text" class="form-control">
+                  </div>
                 </div>
-                <div class="card-content">
-                    <form>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Company (disabled)</label>
-                                    <input type="text" class="form-control" disabled>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Username</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Email address</label>
-                                    <input type="email" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
+              </div>
 
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Fist Name</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Last Name</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Adress</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">City</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Country</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group form-black label-floating is-empty">
-                                    <label class="control-label">Postal Code</label>
-                                    <input type="text" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>About Me</label>
-                                    <div class="form-group form-black label-floating is-empty">
-                                        <label class="control-label"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
-                                        <textarea class="form-control" rows="5"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-danger pull-right">Update Profile</button>
-                        <div class="clearfix"></div>
-                    </form>
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <app-canvas></app-canvas>
                 </div>
-            </div>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="col-md-4">
-            <div class="card card-profile">
-                <div class="card-avatar">
-                    <a href="#pablo">
-                        <img class="img" src="../assets/img/faces/marc.jpg" />
-                    </a>
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-12">
+        <div class="row">
+          <div class="card">
+            <div class="card-header" data-background-color="red">
+              <h4 class="title">Waypoints</h4>
+              <p class="category">Add or edit waypoints here</p>
+            </div>
+            <div class="card-content">
+              <form>
+                <div class="row">
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">X position</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">Y position</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">Angle</label>
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <form>
+                <button type="submit" class="btn btn-danger pull-right">Add</button>
+                <div class="clearfix"></div>
+                <div class="card-content table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>X Position</th>
+                        <th>Y Position</th>
+                        <th>Angle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1 m</td>
+                        <td>2 m</td>
+                        <td>90 deg</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
                 </div>
 
-                <div class="content">
-                    <h6 class="category text-gray">CEO / Co-Founder</h6>
-                    <h4 class="card-title">Alec Thompson</h4>
-                    <p class="card-content">
-                        Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                    </p>
-                    <a href="#pablo" class="btn btn-danger btn-round">Follow</a>
-                </div>
+                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">edit</i> Edit</button>
+              </form>
             </div>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="card">
+            <div class="card-header" data-background-color="red">
+              <h4 class="title">Generated Trajectories</h4>
+              <p class="category">See your list of trajectories</p>
+            </div>
+            <div class="card-content">
+              <form>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Sign contract for "What are conference organizers afraid of?"</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                      </td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                      <td class="td-actions text-right">
+                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card">
+            <div class="card-header" data-background-color="red">
+              <h4 class="title">Settings</h4>
+              <p class="category">General stats about your drive base</p>
+            </div>
+            <div class="card-content">
+              <form>
+                <div class="card-content table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Wheelbase width</th>
+                        <th>Max velocity</th>
+                        <th>Max acceleration</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>10 m</td>
+                        <td>20 m/s</td>
+                        <td>5 m/s^2</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">edit</i> Edit</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
