@@ -9,15 +9,15 @@ import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { CanvasComponent } from './user-profile/canvas.component';
+import { CreateComponent } from './create/create.component';
+import { HelpComponent } from './help/help.component';
+import { CanvasComponent } from './create/canvas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserProfileComponent,
-    TableListComponent,
+    CreateComponent,
+    HelpComponent,
     CanvasComponent
   ],
   imports: [
