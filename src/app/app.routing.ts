@@ -5,10 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CreateComponent } from './create/create.component';
 import { HelpComponent } from './help/help.component';
+//import { HeroDetailComponent } from './hero-detail/hero-detail.component'
 
 const routes: Routes =[
     { path: 'create',   component: CreateComponent },
     { path: 'help',     component: HelpComponent },
+    //{ path: 'detail/:id', component: HeroDetailComponent },
     { path: '',               redirectTo: 'create', pathMatch: 'full' }
 ];
 

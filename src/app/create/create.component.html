@@ -8,11 +8,11 @@
             <p class="category">Start a new trajectory - see the help tab</p>
           </div>
           <div class="card-content">
-              <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <app-canvas></app-canvas>
-                </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <app-canvas></app-canvas>
               </div>
+            </div>
           </div>
         </div>
       </div>
@@ -25,59 +25,55 @@
               <p class="category">Add or edit waypoints here</p>
             </div>
             <div class="card-content">
-              <form>
-                <div class="row">
-                  <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label">X position</label>
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label">Y position</label>
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-md-4 col-sm-12">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label">Angle</label>
-                      <input type="text" class="form-control">
-                    </div>
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">add</i> Add</button>
-                <div class="clearfix"></div>
-                <div class="card-content table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>X Position</th>
-                        <th>Y Position</th>
-                        <th>Angle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>1 m</td>
-                        <td>2 m</td>
-                        <td>90 deg</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">edit</i> Edit</button>
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="form-group form-black label-floating is-empty">
-                      <label class="control-label">Trajectory Name</label>
-                      <input type="text" class="form-control">
-                    </div>
+                <mat-table class="table-margin-bottom" #table [dataSource]="dataSource">
+                  <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
+                        <input matInput [formControl]="row.validator.controls['id']" [readonly]="!row.editing" placeholder="ID" [(ngModel)]="row.currentData.id">
+                      </mat-form-field>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
+                        <input matInput [formControl]="row.validator.controls['name']" type="string" placeholder="Name" [(ngModel)]="row.currentData.name">
+                      </mat-form-field>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="actionsColumn">
+                    <mat-header-cell *matHeaderCellDef>
+                      <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button>
+                    </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="row.startEdit()">
+                    <i class="fa fa-pencil mat-icon"></i>
+                  </button>
+                      <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false" (click)="row.confirmEditCreate()">
+                    <i class="fa fa-check mat-icon"></i>
+                  </button>
+                      <button mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+                    <i class="fa fa-times mat-icon"></i>
+                  </button>
+                    </mat-cell>
+                  </ng-container>
+
+                  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+              </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <div class="form-group form-black label-floating is-empty">
+                    <label class="control-label">Trajectory Name</label>
+                    <input type="text" class="form-control">
                   </div>
                 </div>
-                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">get_app</i> Generate!</button>
-              </form>
-            </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <button type="submit" class="btn btn-danger pull-right pull-down"><i class="material-icons">get_app</i> Generate!</button>
+              </div>
           </div>
         </div>
 
@@ -88,30 +84,12 @@
               <p class="category">General stats about your drive base</p>
             </div>
             <div class="card-content">
-              <form>
-                <div class="card-content table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th>Wheelbase width</th>
-                        <th>Max velocity</th>
-                        <th>Max acceleration</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>10 m</td>
-                        <td>20 m/s</td>
-                        <td>5 m/s^2</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
 
-                <button type="submit" class="btn btn-danger pull-right"><i class="material-icons">edit</i> Edit</button>
-              </form>
+                  <edit-settings>loading</edit-settings>
+
             </div>
           </div>
+
         </div>
       </div>
     </div>

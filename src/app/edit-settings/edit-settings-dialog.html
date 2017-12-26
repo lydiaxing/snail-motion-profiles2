@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Change Settings</h1>
+<div mat-dialog-content>
+  <p>Wheelbase Width (m)</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.wheelbase_width">
+  </mat-form-field>
+  <p>Max Velocity (m/s)</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.max_vel">
+  </mat-form-field>
+  <p>Max Acceleration (m)</p>
+  <mat-form-field>
+    <input matInput tabindex="1" [(ngModel)]="data.max_accel">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="{wheelbase_width:data.wheelbase_width, max_vel:data.max_vel, max_accel:data.max_accel}" cdkFocusInitial>Ok</button>
+</div>
