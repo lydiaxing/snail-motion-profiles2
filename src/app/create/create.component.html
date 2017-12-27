@@ -27,18 +27,34 @@
             <div class="card-content">
                 <mat-table class="table-margin-bottom" #table [dataSource]="dataSource">
                   <ng-container matColumnDef="id">
-                    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
                         <input matInput [formControl]="row.validator.controls['id']" [readonly]="!row.editing" placeholder="ID" [(ngModel)]="row.currentData.id">
                       </mat-form-field>
                     </mat-cell>
                   </ng-container>
-                  <ng-container matColumnDef="name">
-                    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+                  <ng-container matColumnDef="x">
+                    <mat-header-cell *matHeaderCellDef> X </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
-                        <input matInput [formControl]="row.validator.controls['name']" type="string" placeholder="Name" [(ngModel)]="row.currentData.name">
+                        <input matInput type="number" placeholder="X position" [(ngModel)]="row.currentData.x">
+                      </mat-form-field>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="y">
+                    <mat-header-cell *matHeaderCellDef> Y </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
+                        <input matInput type="number" placeholder="Y Position" [(ngModel)]="row.currentData.y">
+                      </mat-form-field>
+                    </mat-cell>
+                  </ng-container>
+                  <ng-container matColumnDef="theta">
+                    <mat-header-cell *matHeaderCellDef> Theta </mat-header-cell>
+                    <mat-cell *matCellDef="let row">
+                      <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
+                        <input matInput type="number" placeholder="Name" [(ngModel)]="row.currentData.theta">
                       </mat-form-field>
                     </mat-cell>
                   </ng-container>

@@ -48,16 +48,6 @@ export class WaypointService {
     );
   }
 
-  searchWaypoints(term: string): Observable<Waypoint[]> {
-    if (!term.trim()) {
-      return of([]);
-    }
-    return this.http.get<Waypoint[]>(`api/waypoints/?name=${term}`).pipe(
-      tap(_ => this.log(`found waypoints matching "${term}"`)),
-      catchError(this.handleError<Waypoint[]>('searchWaypoints', []))
-    );
-  }
-
   addWaypoint (waypoint: Waypoint): Observable<Waypoint> {
     return this.http.post<Waypoint>(this.waypointsUrl, waypoint, httpOptions).pipe(
       tap((waypoint: Waypoint) => this.log(`added waypoint w/ id=${waypoint.id}`)),
