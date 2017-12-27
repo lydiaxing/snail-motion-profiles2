@@ -22,7 +22,7 @@ export class WaypointService {
   getWaypoints (): Observable<Waypoint[]> {
     return this.http.get<Waypoint[]>(this.waypointsUrl)
       .pipe(
-        tap(waypoints => this.log(`fetched waypoints`)),
+        tap(waypoints => console.log("getWaypoints" + waypoints)),
         catchError(this.handleError('getWaypoints', []))
       );
   }
@@ -34,7 +34,7 @@ export class WaypointService {
         map(waypoints => waypoints[0]), // returns a {0|1} element array
         tap(h => {
           const outcome = h ? `fetched` : `did not find`;
-          this.log(`${outcome} waypoint id=${id}`);
+          console.log(`${outcome} waypoint id=${id}`);
         }),
         catchError(this.handleError<Waypoint>(`getWaypoint id=${id}`))
       );
@@ -43,14 +43,14 @@ export class WaypointService {
   getWaypoint(id: number): Observable<Waypoint> {
     const url = `${this.waypointsUrl}/${id}`;
     return this.http.get<Waypoint>(url).pipe(
-      tap(_ => this.log(`fetched waypoint id=${id}`)),
+      tap(_ => console.log(`fetched waypoint id=${id}`)),
       catchError(this.handleError<Waypoint>(`getWaypoint id=${id}`))
     );
   }
 
   addWaypoint (waypoint: Waypoint): Observable<Waypoint> {
     return this.http.post<Waypoint>(this.waypointsUrl, waypoint, httpOptions).pipe(
-      tap((waypoint: Waypoint) => this.log(`added waypoint w/ id=${waypoint.id}`)),
+      tap((waypoint: Waypoint) => console.log(`added waypoint w/ id=${waypoint.id}`)),
       catchError(this.handleError<Waypoint>('addWaypoint'))
     );
   }
@@ -60,14 +60,21 @@ export class WaypointService {
     const url = `${this.waypointsUrl}/${id}`;
 
     return this.http.delete<Waypoint>(url, httpOptions).pipe(
-      tap(_ => this.log(`deleted waypoint id=${id}`)),
+      tap(_ => console.log(`deleted waypoint id=${id}`)),
       catchError(this.handleError<Waypoint>('deleteWaypoint'))
     );
   }
 
   updateWaypoint (waypoint: Waypoint): Observable<any> {
     return this.http.put(this.waypointsUrl, waypoint, httpOptions).pipe(
-      tap(_ => this.log(`updated waypoint id=${waypoint.id}`)),
+      tap(_ => console.log(`updated waypoint id=${waypoint.id}`)),
+      catchError(this.handleError<any>('updateWaypoint'))
+    );
+  }
+
+  updateWaypoints (waypoints: Waypoint[]): Observable<any> {
+    return this.http.put(this.waypointsUrl, waypoints, httpOptions).pipe(
+      tap(_ => console.log(`updated waypoints`)),
       catchError(this.handleError<any>('updateWaypoint'))
     );
   }
@@ -85,14 +92,10 @@ export class WaypointService {
       console.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      this.log(`${operation} failed: ${error.message}`);
+      console.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
     };
-  }
-
-  private log(message: string) {
-    //
   }
 }

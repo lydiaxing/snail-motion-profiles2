@@ -30,7 +30,7 @@
                     <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
-                        <input matInput [formControl]="row.validator.controls['id']" [readonly]="!row.editing" placeholder="ID" [(ngModel)]="row.currentData.id">
+                        <input matInput placeholder="ID" [(ngModel)]="row.currentData.id">
                       </mat-form-field>
                     </mat-cell>
                   </ng-container>
@@ -54,13 +54,14 @@
                     <mat-header-cell *matHeaderCellDef> Theta </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
-                        <input matInput type="number" placeholder="Name" [(ngModel)]="row.currentData.theta">
+                        <input matInput type="number" placeholder="Theta" [(ngModel)]="row.currentData.theta">
                       </mat-form-field>
                     </mat-cell>
                   </ng-container>
+
                   <ng-container matColumnDef="actionsColumn">
                     <mat-header-cell *matHeaderCellDef>
-                      <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button>
+                      <button mat-icon-button color="accent" (click)="add()"><i class="fa fa-plus mat-icon"></i></button>
                     </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="row.startEdit()">
@@ -79,13 +80,6 @@
                   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                 </mat-table>
               </div>
-
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                  <div class="form-group form-black label-floating is-empty">
-                    <label class="control-label">Trajectory Name</label>
-                    <input type="text" class="form-control">
-                  </div>
-                </div>
 
               <div class="col-lg-6 col-md-6 col-sm-12">
                 <button type="submit" class="btn btn-danger pull-right pull-down"><i class="material-icons">get_app</i> Generate!</button>

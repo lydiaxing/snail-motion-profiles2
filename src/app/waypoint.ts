@@ -4,3 +4,8 @@ export class Waypoint {
   y: number;
   theta: number;
 }
+
+/**export class Waypoint {
+  id: number;
+  name: string;
+}**/
