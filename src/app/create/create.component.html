@@ -30,7 +30,7 @@
                     <mat-header-cell *matHeaderCellDef> # </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
-                        <input matInput placeholder="ID" [(ngModel)]="row.currentData.id">
+                        <input matInput [disabled]="true" placeholder="#" [(ngModel)]="row.id">
                       </mat-form-field>
                     </mat-cell>
                   </ng-container>
@@ -61,7 +61,7 @@
 
                   <ng-container matColumnDef="actionsColumn">
                     <mat-header-cell *matHeaderCellDef>
-                      <button mat-icon-button color="accent" (click)="add()"><i class="fa fa-plus mat-icon"></i></button>
+                      <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button>
                     </mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="row.startEdit()">
