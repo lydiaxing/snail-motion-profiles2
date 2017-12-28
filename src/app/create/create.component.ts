@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
   displayedColumns = ['id', 'x', 'y', 'theta', 'actionsColumn'];
 
   @Input() waypointList = [
-    { id: 0, x: 5, y: 6, theta: 2 }
+    { id: 0, x: 1, y: 2, theta: 3 }
   ];
 
   @Output() waypointListChange = new EventEmitter<Waypoint[]>();
@@ -38,16 +38,15 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new TableDataSource<any>(this.waypointList, Waypoint);
-    this.dataSource.datasourceSubject.subscribe(waypointList => this.waypointListChange.emit(waypointList));
-
-    this.waypointListChange.asObservable().subscribe(data => {
-      data.forEach(item => {
-        this.waypointService.updateWaypoint({id: data.length, x: item.x, y: item.y, theta: item.theta} as Waypoint)
+    this.dataSource.datasourceSubject.subscribe(waypointList => {
+      this.waypointListChange.emit(waypointList);
+      console.log(waypointList);
+      waypointList.forEach(item => {
+        this.waypointService.updateWaypoint({id: waypointList.length - 1, x: item.x, y: item.y, theta: item.theta} as Waypoint)
         .subscribe(waypoint => {
           this.waypoints.push(waypoint);
         })
       })
-      this.waypointService.getWaypoints().subscribe(data => console.log(data));
     });
   }
 }

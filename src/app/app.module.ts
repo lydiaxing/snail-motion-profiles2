@@ -27,7 +27,7 @@ import {
 } from '@angular/material';
 
 import { WaypointService } from './waypoint.service';
-//import { WaypointDetailComponent } from './hero-detail/hero-detail.component';
+import { SettingsService } from './settings.service';
 import { CreateComponent } from './create/create.component';
 import { HelpComponent } from './help/help.component';
 import { CanvasComponent } from './create/canvas.component';
@@ -39,7 +39,6 @@ import { EditSettings, EditSettingsDialog } from './edit-settings/edit-settings'
     CreateComponent,
     HelpComponent,
     CanvasComponent,
-    //HeroDetailComponent,
     EditSettings,
     EditSettingsDialog
   ],
@@ -68,7 +67,7 @@ import { EditSettings, EditSettingsDialog } from './edit-settings/edit-settings'
     MatSelectModule
   ],
   entryComponents: [EditSettings, EditSettingsDialog],
-  providers: [WaypointService],
+  providers: [WaypointService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

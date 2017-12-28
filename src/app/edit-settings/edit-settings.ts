@@ -6,7 +6,6 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
   templateUrl: 'edit-settings.html'
 })
 export class EditSettings {
-
   wheelbase_width: number = 1.2;
   max_vel: number = 18;
   max_accel: number = 4;
