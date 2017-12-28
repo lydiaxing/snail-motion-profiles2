@@ -42,7 +42,7 @@ export class SettingsService {
 
   updateSettings (settings: Settings): Observable<any> {
     return this.http.put(this.settingsUrl, settings, httpOptions).pipe(
-      tap(_ => console.log(`updated settings`)),
+      tap(_ => console.log(`updated settings` + JSON.stringify(settings))),
       catchError(this.handleError<any>('updateSettings'))
     );
   }
