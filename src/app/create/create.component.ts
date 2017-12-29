@@ -1,4 +1,4 @@
-import { Component, OnInit, Injectable, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Injectable, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/table'
@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule, FormGroup, FormControl } from '@angul
 import { InMemoryDataService } from '../in-memory-data.service';
 
 import { TableDataSource } from 'angular4-material-table';
+import { CanvasComponent } from './canvas.component';
 
 @Component({
   selector: 'app-create',
@@ -19,6 +20,8 @@ import { TableDataSource } from 'angular4-material-table';
 })
 
 export class CreateComponent implements OnInit {
+  @ViewChild(CanvasComponent) child;
+
   waypointService: WaypointService;
   waypoints: Waypoint[] = [];
 
@@ -42,6 +45,7 @@ export class CreateComponent implements OnInit {
       this.waypointListChange.emit(waypointList);
       console.log(waypointList);
       waypointList.forEach(item => {
+        this.child.drawWaypoint(item.x, item.y);
         this.waypointService.updateWaypoint({id: waypointList.length - 1, x: item.x, y: item.y, theta: item.theta} as Waypoint)
         .subscribe(waypoint => {
           this.waypoints.push(waypoint);
