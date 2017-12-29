@@ -41,14 +41,18 @@ export class CreateComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = new TableDataSource<any>(this.waypointList, Waypoint);
+    this.waypointList.forEach(waypoint => this.child.drawWaypoint(waypoint.x, waypoint.y));
     this.dataSource.datasourceSubject.subscribe(waypointList => {
       this.waypointListChange.emit(waypointList);
       console.log(waypointList);
+      this.child.clear();
+      this.child.redraw(waypointList);
       waypointList.forEach(item => {
         this.child.drawWaypoint(item.x, item.y);
         this.waypointService.updateWaypoint({id: waypointList.length - 1, x: item.x, y: item.y, theta: item.theta} as Waypoint)
         .subscribe(waypoint => {
           this.waypoints.push(waypoint);
+          console.log("done");
         })
       })
     });
