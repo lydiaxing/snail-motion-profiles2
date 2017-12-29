@@ -47,7 +47,7 @@ export class CanvasComponent implements AfterViewInit {
 
     this.cx.lineWidth = 2;
     this.cx.lineCap = 'round';
-    this.cx.strokeStyle = '#000';
+    this.cx.strokeStyle = '#4286f4';
     this.drawBackground(canvasEl);
   }
 

@@ -4,8 +4,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="card">
           <div class="card-header" data-background-color="red">
-            <h4 class="title">Create</h4>
-            <p class="category">Start a new trajectory - see the help tab</p>
+            <h4 class="title">Preview</h4>
           </div>
           <div class="card-content">
             <div class="row">
@@ -35,7 +34,7 @@
                     </mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="x">
-                    <mat-header-cell *matHeaderCellDef> X </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> X (meters)</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
                         <input matInput type="number" placeholder="X position" [(ngModel)]="row.currentData.x">
@@ -43,7 +42,7 @@
                     </mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="y">
-                    <mat-header-cell *matHeaderCellDef> Y </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> Y (meters)</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
                         <input matInput type="number" placeholder="Y Position" [(ngModel)]="row.currentData.y">
@@ -51,7 +50,7 @@
                     </mat-cell>
                   </ng-container>
                   <ng-container matColumnDef="theta">
-                    <mat-header-cell *matHeaderCellDef> Theta </mat-header-cell>
+                    <mat-header-cell *matHeaderCellDef> Theta (degrees)</mat-header-cell>
                     <mat-cell *matCellDef="let row">
                       <mat-form-field floatPlaceholder="{{ row.editing ? 'float' : 'never'}}">
                         <input matInput type="number" placeholder="Theta" [(ngModel)]="row.currentData.theta">
@@ -81,13 +80,10 @@
                 </mat-table>
               </div>
 
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <button type="submit" class="btn btn-danger pull-down btnfull" (click)="clear()"><i class="material-icons">clear</i>Reset</button>
+              <div class="col-lg-6 col-md-12 col-sm-12">
+                <button type="submit" class="btn btn-danger btnfull" (click)="clear()"><i class="material-icons">clear</i>Reset Canvas</button>
               </div>
-              <div class="col-lg-4 col-md-12 col-sm-12">
-                <button type="submit" class="btn btn-danger pull-down btnfull" (click)="preview()"><i class="material-icons">visibility</i>Preview</button>
-              </div>
-              <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="col-lg-6 col-md-12 col-sm-12">
                 <button type="submit" class="btn btn-danger pull-right pull-down btnfull"><i class="material-icons">get_app</i> Generate!</button>
               </div>
           </div>
