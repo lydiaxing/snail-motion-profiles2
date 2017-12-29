@@ -1,0 +1,27 @@
+- cubic spline interpolation
+  - (x1, y1, theta1) to (x2, y2, theta2)
+  - find f(x) from x1 to x2
+    - f(x) = ax^3 + bx^2 + cx + d
+    - f(x1) = y1
+    - f(x2) = y2
+    - f'(x1) = tan(theta1)
+    - f'(x2) = tan(theta2)
+  - tan(theta) of waypoint = derivative of segment at that waypoint
+
+- code ideas:
+  - install python shell and make sure can call method at certain times, get a loading screen
+  - cubicCoeffs = Coeff[], Coeff = {a, b, c, d}
+  - split up into waypoint pairs ---- zip?
+  - findCubicCoeffs
+      //a(waypoint1.x)^3 + b(waypoint1.x)^2 + c(waypoint1.x) + d = waypoint1.y
+      //a(waypoint2.x)^3 + b(waypoint2.x)^2 + c(waypoint2.x) + d = waypoint2.y
+      //3a(waypint1.x)^2 + 2b(waypoint1.x) + c = tan(waypoint1.theta)
+      //3a(waypoint2.x)^2 + 2b(waypoint2.x) + c = tan(waypoint2.theta)
+      | (waypoint1.x)^3  (waypoint1.x^2)  (waypoint1.x)  1  |  |a| = |waypoint1.y|
+      | (waypoint2.x)^3  (waypoint2.x^2)  (waypoint2.x)  1  |  |b| = |waypoint2.y|
+      | 3(waypoint1.x)^2 2(waypoint1.x)   1              0  |  |c| = |tan(waypoint1.theta)|
+      | 3(waypoint2.x)^2 2(waypoint2.x)   1              0  |  |d| = |tan(waypoint2.theta)|
+      solve that matrix - must be scipy out there or something to do that
+      invert the left one
+      invert * rightmost = a b c d matrix (flipped other way)
+  - tick x = 0.5
