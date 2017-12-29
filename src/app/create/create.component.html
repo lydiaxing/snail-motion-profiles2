@@ -81,8 +81,14 @@
                 </mat-table>
               </div>
 
-              <div class="col-lg-6 col-md-6 col-sm-12">
-                <button type="submit" class="btn btn-danger pull-right pull-down"><i class="material-icons">get_app</i> Generate!</button>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <button type="submit" class="btn btn-danger pull-down btnfull" (click)="clear()"><i class="material-icons">clear</i>Reset</button>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <button type="submit" class="btn btn-danger pull-down btnfull" (click)="preview()"><i class="material-icons">visibility</i>Preview</button>
+              </div>
+              <div class="col-lg-4 col-md-12 col-sm-12">
+                <button type="submit" class="btn btn-danger pull-right pull-down btnfull"><i class="material-icons">get_app</i> Generate!</button>
               </div>
           </div>
         </div>

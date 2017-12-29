@@ -77,12 +77,5 @@ export class CanvasComponent implements AfterViewInit {
 
   private clear(){
     this.drawBackground(this.canvas.nativeElement);
-    this.waypoints.forEach(waypoint => this.drawWaypoint(waypoint.x, waypoint.y));
-  }
-
-  private redraw(waypoints: Waypoint[]){
-    console.log("i got the waypoints" + waypoints.entries().next());
-    this.waypoints = waypoints;
-    waypoints.forEach(waypoint => this.drawWaypoint(waypoint.x, waypoint.y));
   }
 }

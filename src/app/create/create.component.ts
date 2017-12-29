@@ -45,10 +45,7 @@ export class CreateComponent implements OnInit {
     this.dataSource.datasourceSubject.subscribe(waypointList => {
       this.waypointListChange.emit(waypointList);
       console.log(waypointList);
-      this.child.clear();
-      this.child.redraw(waypointList);
       waypointList.forEach(item => {
-        this.child.drawWaypoint(item.x, item.y);
         this.waypointService.updateWaypoint({id: waypointList.length - 1, x: item.x, y: item.y, theta: item.theta} as Waypoint)
         .subscribe(waypoint => {
           this.waypoints.push(waypoint);
@@ -56,5 +53,13 @@ export class CreateComponent implements OnInit {
         })
       })
     });
+  }
+
+  clear(): void{
+    this.child.clear();
+  }
+
+  preview(): void{
+    this.waypointList.forEach(waypoint => this.child.drawWaypoint(waypoint.x, waypoint.y));
   }
 }
