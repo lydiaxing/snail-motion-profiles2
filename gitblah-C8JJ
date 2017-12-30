@@ -1,0 +1,19 @@
+2017-12-29T21:25:10-05:00 | 14c3d094043e27ccdbb6829d2455ead2ff7aa50a | path bug fixed
+2017-12-29T20:30:12-05:00 | 0816b0d461e066052e3acb347a8ba250e5440aa3 | pathgen doing everything it's supposed to, just getting the wrong numbers
+2017-12-29T14:27:38-05:00 | 16f314b68eb7de2003d00a2b55316311182ddb99 | finished planning for path generation
+2017-11-19T09:49:57-05:00 | a06d0183c1c75dba48e32f61d0c2361307ec64bf | fixing formatting
+2017-11-18T23:22:55-05:00 | 0204e4df20ad3be3ed36a377e93f7ddc7763df10 | sacrificed functionality to get rid of that bug
+2017-11-18T22:57:59-05:00 | 318ee46818fdba826301067a7428392d77f3f19c | unresolved bug, waypoint editing does not redraw
+2017-10-28T22:24:55-05:00 | c29dd22facbd375ccebce526583b9d4d30d48a24 | drawing waypoints works
+2017-10-18T16:17:21-05:00 | 2cba7e865f20074bc9b9bcc7fc04eb27ded5658f | edit settings dialog sending to api
+2017-10-17T22:55:30-05:00 | c60aafdc5ac7f87a2f537e1d18e800d552c18b68 | fixed bug with eventemitter, added settings service
+2017-10-17T19:14:34-05:00 | 426dec69528716a77ddca1738b1118b405c80d45 | waypoint id is now row id
+2017-10-17T14:46:13-05:00 | 97cfd48c64f2e37f35831dfc1afd640b21d9c9d9 | waypoint api functional
+2017-9-26T20:03:40-05:00 | aec9546bd794a977dc9a4c0908f8bfbcb24af9a1 | edited readme and got waypoint table working
+2017-9-26T17:45:20-05:00 | 7be9f0fd044b6608e3d9b2cdfde883e109497690 | I seriously need to commit early and often...added dialog and editable table
+2017-9-24T18:21:39-05:00 | bc9445491d7cb77fd1d1e7ba253c2f7bbad7996f | clean before adding api
+2017-9-23T21:53:14-05:00 | c6996c261b11f4bf4ab1f14367652e42a2095f14 | rename
+2017-9-23T21:33:26-05:00 | 0d9dcef081baba737ab8d8749dd77e48b3b9c73b | ironing out UI design
+2017-9-18T21:50:40-05:00 | 81388357ba807e1d20d72f63a5317d37f89c94c6 | cut unused
+2017-9-18T09:56:02-05:00 | 3f8300b8379b33b2f8129c0111c3fc8c3f0a67c1 | initial bootstrap theme
+
