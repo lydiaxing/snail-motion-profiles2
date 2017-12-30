@@ -22,13 +22,14 @@ import {
   MatNativeDateModule,
   MatAutocompleteModule,
   MatProgressSpinnerModule,
+  MatProgressBarModule,
   MatRippleModule,
   MatSelectModule
 } from '@angular/material';
 
 import { WaypointService } from './waypoint.service';
 import { SettingsService } from './settings.service';
-import { CreateComponent } from './create/create.component';
+import { CreateComponent, GenerationDialog } from './create/create.component';
 import { HelpComponent } from './help/help.component';
 import { CanvasComponent } from './create/canvas.component';
 import { EditSettings, EditSettingsDialog } from './edit-settings/edit-settings';
@@ -40,7 +41,8 @@ import { EditSettings, EditSettingsDialog } from './edit-settings/edit-settings'
     HelpComponent,
     CanvasComponent,
     EditSettings,
-    EditSettingsDialog
+    EditSettingsDialog,
+    GenerationDialog
   ],
   imports: [
     BrowserModule,
@@ -63,10 +65,11 @@ import { EditSettings, EditSettingsDialog } from './edit-settings/edit-settings'
     MatNativeDateModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
+    MatProgressBarModule,
     MatRippleModule,
     MatSelectModule
   ],
-  entryComponents: [EditSettings, EditSettingsDialog],
+  entryComponents: [EditSettings, EditSettingsDialog, CreateComponent, GenerationDialog],
   providers: [WaypointService, SettingsService],
   bootstrap: [AppComponent]
 })

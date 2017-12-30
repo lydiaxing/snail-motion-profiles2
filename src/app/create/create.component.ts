@@ -1,4 +1,5 @@
-import { Component, OnInit, Injectable, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, Injectable, Input, Output, EventEmitter, ViewChild, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { DataSource } from '@angular/cdk/table'
@@ -11,6 +12,7 @@ import { InMemoryDataService } from '../in-memory-data.service';
 
 import { TableDataSource } from 'angular4-material-table';
 import { CanvasComponent } from './canvas.component';
+import { PathGenerator } from '../trajectory/path-gen';
 
 @Component({
   selector: 'app-create',
@@ -25,7 +27,9 @@ export class CreateComponent implements OnInit {
   waypointService: WaypointService;
   waypoints: Waypoint[] = [];
 
-  constructor(waypointService: WaypointService) {
+  pathGenerator: PathGenerator;
+
+  constructor(public dialog: MatDialog, waypointService: WaypointService) {
     this.waypointService = waypointService;
   }
 
@@ -59,4 +63,33 @@ export class CreateComponent implements OnInit {
   clear(): void{
     this.child.clear();
   }
+
+  generate(): void {
+    let dialogRef = this.dialog.open(GenerationDialog, {
+      width: '250px',
+      data: { }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {})
+    this.sendToGenerator();
+  }
+
+  sendToGenerator(): void{
+    this.waypointService.getWaypoints().subscribe(response => {
+      console.log(response);
+      this.pathGenerator = new PathGenerator(response, () => console.log("makepathgenerator callback succeeded"));
+      this.pathGenerator.makePath(() => console.log("makepath callback succeeded"));
+    });
+  }
+}
+
+@Component({
+  selector: 'generate-dialog',
+  templateUrl: 'generate-dialog.html',
+})
+export class GenerationDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<GenerationDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 }
