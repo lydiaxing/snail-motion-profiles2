@@ -35,9 +35,7 @@ export class CreateComponent implements OnInit {
 
   displayedColumns = ['id', 'x', 'y', 'theta', 'actionsColumn'];
 
-  @Input() waypointList = [
-    { id: 0, x: 1, y: 2, theta: 3 }
-  ];
+  @Input() waypointList = [ ];
 
   @Output() waypointListChange = new EventEmitter<Waypoint[]>();
 
