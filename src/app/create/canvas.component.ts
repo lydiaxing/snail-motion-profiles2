@@ -32,7 +32,6 @@ export class CanvasComponent implements AfterViewInit {
 
   private cx: CanvasRenderingContext2D;
   private radius = 10;
-  public waypoints: Waypoint[] = [];
 
   constructor(
     private waypointService: WaypointService
@@ -52,6 +51,7 @@ export class CanvasComponent implements AfterViewInit {
   }
 
   private drawWaypoint(xpos: number, ypos: number) {
+    this.cx.beginPath();
     var x = xpos*this.metersToPxW;
     var y = this.height - ypos*this.metersToPxH;
     console.log("called drawWaypoint" + x + "ypos" + y);

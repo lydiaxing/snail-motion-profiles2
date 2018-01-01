@@ -10,11 +10,12 @@ import { SettingsService } from '../settings.service';
 })
 export class EditSettings {
   settingsService: SettingsService;
-  settings: Settings = null;
-
-  wheelbase_width: number = 1.2;
-  max_vel: number = 18;
-  max_accel: number = 5.4;
+  settings: Settings = {
+    id: 0,
+    wheelbase_width: 1.2,
+    max_vel: 18,
+    max_accel: 5.4
+  };
 
   result:{
     wheelbase_width: number;
@@ -30,9 +31,9 @@ export class EditSettings {
     let dialogRef = this.dialog.open(EditSettingsDialog, {
       width: '250px',
       data: {
-              wheelbase_width: this.wheelbase_width,
-              max_vel: this.max_vel,
-              max_accel: this.max_accel
+              wheelbase_width: this.settings.wheelbase_width,
+              max_vel: this.settings.max_vel,
+              max_accel: this.settings.max_accel
       }
     });
 

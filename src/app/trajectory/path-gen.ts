@@ -1,6 +1,7 @@
 import { Waypoint } from '../waypoint';
 const {Matrix} = require('ml-matrix');
 var math = require('mathjs');
+var FileSaver = require('file-saver');
 
 /**
   see notes.txt under src/app/trajectory/notes.txt
@@ -31,6 +32,8 @@ export class PathGenerator {
       console.log(typeof(coeffs[3]*1));
       this.createPathPoints(this.waypoints[i].x, this.waypoints[i+1].x, coeffs);
     }
+    var blob = new Blob([JSON.stringify(this.pathPoints)], {type: "text/plain;charset=utf-8"});
+    FileSaver.saveAs(blob, "trajectory.txt");
     console.log("pathpoints")
     console.log(this.pathPoints);
     callback();

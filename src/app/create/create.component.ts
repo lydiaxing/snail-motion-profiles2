@@ -23,6 +23,7 @@ import { PathGenerator } from '../trajectory/path-gen';
 
 export class CreateComponent implements OnInit {
   @ViewChild(CanvasComponent) child;
+  dialogRef: MatDialogRef<GenerationDialog>;
 
   waypointService: WaypointService;
   waypoints: Waypoint[] = [];
@@ -48,7 +49,7 @@ export class CreateComponent implements OnInit {
       this.waypointListChange.emit(waypointList);
       console.log(waypointList);
       waypointList.forEach(item => {
-        this.child.drawWaypoint(item.x, item.y)
+        this.child.drawWaypoint(item.x, item.y);
         this.waypointService.updateWaypoint({id: waypointList.length - 1, x: item.x, y: item.y, theta: item.theta} as Waypoint)
         .subscribe(waypoint => {
           this.waypoints.push(waypoint);
@@ -63,12 +64,12 @@ export class CreateComponent implements OnInit {
   }
 
   generate(): void {
-    let dialogRef = this.dialog.open(GenerationDialog, {
+    this.dialogRef = this.dialog.open(GenerationDialog, {
       width: '250px',
       data: { }
     });
 
-    dialogRef.afterClosed().subscribe(result => {})
+    this.dialogRef.afterClosed().subscribe(result => {})
     this.sendToGenerator();
   }
 
@@ -76,7 +77,7 @@ export class CreateComponent implements OnInit {
     this.waypointService.getWaypoints().subscribe(response => {
       console.log(response);
       this.pathGenerator = new PathGenerator(response, () => console.log("makepathgenerator callback succeeded"));
-      this.pathGenerator.makePath(() => console.log("makepath callback succeeded"));
+      this.pathGenerator.makePath(() => this.dialogRef.close());
     });
   }
 }
