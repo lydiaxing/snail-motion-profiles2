@@ -25,3 +25,15 @@
       invert the left one
       invert * rightmost = a b c d matrix (flipped other way)
   - tick x = 0.5
+
+- improved parametric ideas
+  - tick t = 0.5
+  - x1(t1) = a(t1)^3 + b(t1)^2 + c(t1) + d = x1
+  - y1(t1) = e(t1)^3 + f(t1)^2 + g(t1) + h = y1
+  - x2(t2) = i(t2)^3 + j(t2)^2 + k(t2) + l = x2
+  - y2(t2) = m(t2)^3 + n(t2)^2 + o(t2) + p = y2
+  - y1'(t) / x1'(t) = tan(theta1)
+  - y2'(t) / x2'(t) = tan(theta1)
+
+  - x = t
+  - y = blah

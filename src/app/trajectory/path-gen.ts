@@ -17,7 +17,7 @@ export class PathGenerator {
   constructor(waypoints: Waypoint[], callback: () => void) {
     this.waypoints = waypoints;
     //console.log("pathgen got the waypoints");
-    this.waypoints.forEach(item => console.log(item));
+    //this.waypoints.forEach(item => console.log(item));
     callback();
   }
 
@@ -28,14 +28,14 @@ export class PathGenerator {
       //console.log(this.waypoints[i].id + ", " + this.waypoints[i+1].id);
       //ax^3 + bx^2 + cx + d
       var coeffs = this.makeMatrices(this.waypoints[i],this.waypoints[i+1]);
-      console.log("coeffs ");
-      console.log(typeof(coeffs[3]*1));
+      //console.log("coeffs ");
+      //console.log(typeof(coeffs[3]*1));
       this.createPathPoints(this.waypoints[i].x, this.waypoints[i+1].x, coeffs);
     }
     var blob = new Blob([JSON.stringify(this.pathPoints)], {type: "text/plain;charset=utf-8"});
     FileSaver.saveAs(blob, "trajectory.txt");
-    console.log("pathpoints")
-    console.log(this.pathPoints);
+    //console.log("pathpoints: ")
+    //console.log(this.pathPoints);
     callback();
   }
 
@@ -67,24 +67,30 @@ export class PathGenerator {
   createPathPoints(xpos1: number, xpos2: number, coeffs) {
     //console.log("from " + xpos1 + "to " + xpos2);
     var i;
-    for (i = 0; i*this.sampleRate + xpos1 < xpos2; i++) {
-      //console.log(i*this.sampleRate + xpos1);
-      //ax^3 + bx^2 + cx + d
-      var x = i*this.sampleRate + xpos1;
-      var a = coeffs[0]*math.pow(x, 3);
-      //console.log("a:  " + typeof(a));
-      var b = coeffs[1]*math.pow(x, 2);
-      //console.log("b:  " + typeof(b));
-      var c = coeffs[2]*x;
-      //console.log("c:  " + typeof(c));
-      var d = coeffs[3]*1;
-      //console.log("d:  " + typeof(d));
-      var y = a+b+c+d;
-      //console.log("y:  "+ typeof(y));
-      this.pathPoints.push({x, y} as PathPoint);
-      console.log("pushed")
+    if(xpos1 < xpos2){
+      console.log("xpos1 < xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
+      for (i = 0; i*this.sampleRate + xpos1 < xpos2; i++) {
+        var x = i*this.sampleRate + xpos1;
+        var a = coeffs[0]*math.pow(x, 3);
+        var b = coeffs[1]*math.pow(x, 2);
+        var c = coeffs[2]*x;
+        var d = coeffs[3]*1;
+        var y = a+b+c+d;
+        this.pathPoints.push({x, y} as PathPoint);
+      }
+    }else if(xpos2 < xpos1){
+      console.log("xpos1 > xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
+      for (i = 0; xpos1 - i*this.sampleRate > xpos2; i++) {
+        console.log("xpos1 - i*this.sampleRate: " + (xpos1 - i*this.sampleRate));
+        var x = xpos1 - i*this.sampleRate;
+        var a = coeffs[0]*math.pow(x, 3);
+        var b = coeffs[1]*math.pow(x, 2);
+        var c = coeffs[2]*x;
+        var d = coeffs[3]*1;
+        var y = a+b+c+d;
+        this.pathPoints.push({x, y} as PathPoint);
+      }
     }
-    //console.log("stop!");
   }
 
   getTanDeg(deg) :number {
