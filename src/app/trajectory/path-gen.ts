@@ -16,8 +16,9 @@ export class PathGenerator {
 
   constructor(waypoints: Waypoint[], callback: () => void) {
     this.waypoints = waypoints;
-    //console.log("pathgen got the waypoints");
-    //this.waypoints.forEach(item => console.log(item));
+    console.log("pathgen got the waypoints");
+    this.waypoints.forEach(item => console.log(item));
+    console.log("--------------------------")
     callback();
   }
 
@@ -50,9 +51,14 @@ export class PathGenerator {
     var B = new Matrix([
       [waypoint1.y],
       [waypoint2.y],
-      [this.getTanDeg(waypoint1.theta)],
-      [this.getTanDeg(waypoint2.theta)]
+      [Math.tan(waypoint1.theta * Math.PI/180)],
+      [Math.tan(waypoint2.theta * Math.PI/180)]
     ]);
+    console.log("B");
+    console.log(B);
+    console.log("--------------------------");
+    console.log("coeffs");
+    console.log("--------------------------");
     /**console.log("coeffs");
     console.log(A.pseudoInverse().mmul(B));
     console.log("A");
@@ -68,7 +74,7 @@ export class PathGenerator {
     //console.log("from " + xpos1 + "to " + xpos2);
     var i;
     if(xpos1 < xpos2){
-      console.log("xpos1 < xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
+      //console.log("xpos1 < xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
       for (i = 0; i*this.sampleRate + xpos1 < xpos2; i++) {
         var x = i*this.sampleRate + xpos1;
         var a = coeffs[0]*math.pow(x, 3);
@@ -79,9 +85,9 @@ export class PathGenerator {
         this.pathPoints.push({x, y} as PathPoint);
       }
     }else if(xpos2 < xpos1){
-      console.log("xpos1 > xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
+      //console.log("xpos1 > xpos2" + " xpos1: " + xpos1 + " xpos2: " + xpos2);
       for (i = 0; xpos1 - i*this.sampleRate > xpos2; i++) {
-        console.log("xpos1 - i*this.sampleRate: " + (xpos1 - i*this.sampleRate));
+        //console.log("xpos1 - i*this.sampleRate: " + (xpos1 - i*this.sampleRate));
         var x = xpos1 - i*this.sampleRate;
         var a = coeffs[0]*math.pow(x, 3);
         var b = coeffs[1]*math.pow(x, 2);
@@ -91,11 +97,6 @@ export class PathGenerator {
         this.pathPoints.push({x, y} as PathPoint);
       }
     }
-  }
-
-  getTanDeg(deg) :number {
-    var rad = deg * Math.PI/180;
-    return Math.tan(rad);
   }
 }
 
